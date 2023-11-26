@@ -1,0 +1,311 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+/* navbar */
+.navbar {
+  height: 5rem;
+  background: white;
+}
+
+.fa-compass {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222222;
+}
+
+.wanderlust {
+  color: #fe424d;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.search-input {
+  border-radius: 25px;
+  height: 2.5rem;
+}
+
+.search-btn {
+  height: 2.5rem;
+  border: 2px solid #fe424d;
+  border-radius: 25px;
+  background-color: #fe424d;
+  color: #fff;
+  width: 150px;
+}
+
+.search-btn i {
+  display: inline;
+}
+
+.search-btn:hover {
+  border: 2px solid #fe424d;
+  background-color: #fff;
+  color: black;
+}
+
+.nav-btn {
+  border-width: 2px;
+  border-color: #fe424d;
+}
+
+.nav-btn:hover {
+  background-color: #fe424d;
+  color: #fff;
+}
+
+/* footer */
+.f-info {
+  background-color: #ebebeb;
+  height: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+  padding-top: 0.5rem;
+}
+
+.f-info-socials,
+.f-info-brand,
+.f-info-links {
+  display: flex;
+  justify-content: center;
+  align-items: space-evenly;
+  width: 100%;
+}
+
+.f-info-socials i {
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+  margin: 0 0.5rem;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+/* listings */
+.listing-card {
+  border: none;
+  padding-bottom: 2rem;
+}
+
+.listing-link {
+  text-decoration: none;
+}
+
+.card-img-top {
+  border-radius: 0.8rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-text p {
+  font-weight: 400;
+}
+
+/* new listing */
+.add-btn {
+  background-color: #fe424d;
+  border: none;
+}
+
+/* edit listing */
+.edit-btn {
+  background-color: #fe424d;
+  border: none;
+  width: 4rem;
+  margin-left: 0;
+}
+
+.update-btn {
+  background-color: #fe424d;
+  border: none;
+  width: 5rem;
+  margin-left: 0;
+}
+
+/* show listing */
+.show-img {
+  height: 30vh;
+}
+
+.delete-btn {
+  border: none;
+  width: 4.5rem;
+}
+
+.btns {
+  display: flex;
+  justify-content: start;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter {
+  text-align: center;
+  margin-right: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.filter:hover {
+  opacity: 1;
+}
+
+.filter p {
+  font-size: 0.8rem;
+}
+
+.tax-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 0.7rem;
+}
+
+.tax-info {
+  display: none;
+}
+
+.listing-card img {
+  height: 20rem;
+}
+
+.home-body {
+  background-image: url(https://images.pexels.com/photos/227692/landscape-reflection-waves-ripples-227692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+}
+
+.welcome {
+  display: inline-block;
+  margin-top: 10%;
+  margin-left: 23%;
+  background-color: rgba(128, 128, 128, 0.3);
+  backdrop-filter: blur(3px);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 3rem;
+}
+.welcome h1,
+h3,
+a {
+  display: inline-block;
+  color: white;
+}
+
+.welcome a {
+  text-decoration: none;
+}
+
+.get-started {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  margin: 0.5rem 0;
+  transform: translate(-50%, 0);
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 1rem;
+}
+
+.get-started:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+}
+
+.like {
+  display: inline-block;
+  position: relative;
+  bottom: 45px;
+  left: 10px;
+  height: 40px;
+  width: 40px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border-radius: 50%;
+  font-size: 25px;
+  color: #fff;
+}
+
+.like a {
+  text-decoration: none;
+}
+
+.likebtn {
+  display: inline;
+  margin-top: 6px;
+  opacity: 0.9;
+}
+
+#not-liked {
+  display: inline;
+}
+
+#liked {
+  display: none;
+}
+
+.unlike {
+  display: inline-block;
+  position: relative;
+  bottom: 85px;
+  left: 55px;
+  height: 40px;
+  width: 40px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border-radius: 50%;
+  font-size: 25px;
+  color: #fff;
+}
+
+#not-unliked {
+  display: inline;
+}
+
+#unliked {
+  display: none;
+}

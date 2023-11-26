@@ -1,0 +1,132 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="row mt-2">
+    <div class="col-8 offset-3">
+      <h3><%= listing.title %></h3>
+    </div>
+    <div class="card col-7 offset-3 listing-card">
+      <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing image" />
+      <div class="like">
+        <i class="fa-regular fa-thumbs-up likebtn" id="not-liked"></i>
+        <i class="fa-solid fa-thumbs-up likebtn" id="liked"></i>
+      </div>
+      <div class="unlike">
+        <i class="fa-regular fa-thumbs-down likebtn" id="not-unliked"></i></i>
+        <i class="fa-solid fa-thumbs-down likebtn" id="unliked"></i></i>
+      </div>
+      <div class="card-body">
+        <p class="card-text">created by <i><%=listing.owner.username %></i></p>
+        <p class="card-text"><%= listing.description %></p>
+        <p class="card-text"><b>Price:</b> &#8377; <%= listing.price %></p>
+        <p class="card-text"><%= listing.location %>, <%= listing.country %></p>
+      </div>
+    </div>
+    <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
+    <div class="btns col-7 offset-3">
+      <form action="/listings/<%= listing._id %>/edit" method="get">
+        <button class="btn btn-dark edit-btn col-1 offset-3">edit</button>
+      </form>
+      <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
+        <button class="btn btn-dark delete-btn col-1 offset-6">delete</button>
+      </form>
+    </div>
+    <% } %>
+    <hr />
+    <!-- review form -->
+    <div class="col-8 offset-3 mb-3">
+      <form class="needs-validation" action="/listings/<%= listing._id %>/reviews" method="post" novalidate>
+        <h5>Leave a review</h5>
+        <fieldset class="starability-grow">
+          <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+          <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+        <div class="mt-2 mb-2">
+          <label class="form-label" for="review[comment]">Comment:</label>
+          <textarea class="form-control" name="review[comment]" cols="30" rows="3" required></textarea>
+          <div class="invalid-feedback">Please give a comment</div>
+        </div>
+        <button class="btn btn-outline-dark">Submit</button>
+      </form>
+    </div>
+    <div class="col-8 offset-3">
+      <hr />
+
+      <!-- all reviews -->
+      <h5>All reviews</h5>
+      <div class="row">
+        <% for(review of listing.reviews){ %>
+        <div class="card col-5 ms-4 mb-3">
+          <div class="card-body">
+            <h6 class="card-title"><i>@<%= review.author.username %></i></h6>
+            <p class="starability-result" data-rating="<%= review.rating %>"></p>
+            <p class="card-text"><%= review.comment %></p>
+          </div>
+          <% if (currUser && currUser._id.equals(review.author._id)) { %>
+          <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+            <button class="btn btn-sm btn-dark mt-1 mb-2">Delete</button>
+          </form>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  let likeStatus = "none";
+  
+  let like = document.getElementsByClassName("like");
+  like[0].addEventListener("click", ()=>{
+    if(likeStatus == "unliked"){
+      unlikeBtn();
+    }
+    likeBtn();
+  });
+  
+  let unlike = document.getElementsByClassName("unlike")
+  unlike[0].addEventListener("click", ()=>{
+    if(likeStatus == "liked"){
+      likeBtn();
+    }
+    unlikeBtn();
+    
+  });
+
+function likeBtn(){
+  console.log("likebtn");
+  likeStatus = "liked";
+  let liked = document.getElementById("liked");
+  let notLiked = document.getElementById("not-liked");
+  if (liked.style.display != "inline") {
+    liked.style.display = "inline";
+    notLiked.style.display = "none";
+  } else {
+    liked.style.display = "none";
+    notLiked.style.display = "inline";
+  }
+}
+
+function unlikeBtn(){
+  console.log("unlikebtn")
+  likeStatus = "unliked";
+  let unliked = document.getElementById("unliked");
+  let notUnliked = document.getElementById("not-unliked");
+  if (unliked.style.display != "inline") {
+    unliked.style.display = "inline";
+    notUnliked.style.display = "none";
+  } else {
+    unliked.style.display = "none";
+    notUnliked.style.display = "inline";
+  }
+}
+</script>
