@@ -60,7 +60,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//const mongoUrl = "mongodb://127.0.0.1:27017/wanderlust";
 
 async function main() {
   await mongoose.connect(atlasUrl);
