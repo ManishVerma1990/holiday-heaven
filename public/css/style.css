@@ -11,10 +11,15 @@ body {
 
 /* navbar */
 .navbar {
-  height: 5rem;
+  min-height: 5rem;
   background: white;
 }
 
+.navbar-brand {
+  color: #fe424d;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
 .fa-compass {
   color: #fe424d;
   font-size: 2rem;
@@ -22,12 +27,6 @@ body {
 
 .nav-link {
   color: #222222;
-}
-
-.wanderlust {
-  color: #fe424d;
-  font-weight: 900;
-  font-size: 1.5rem;
 }
 
 .search-input {
@@ -168,17 +167,56 @@ body {
   justify-content: start;
 }
 
+.filterbar {
+  background-color: #fff;
+}
+
+.wrapper {
+  margin: 0;
+  position: relative;
+}
+
+.wrapper .arrow-key {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  height: 1.5em;
+  width: 1.5em;
+  cursor: pointer;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.5em;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.wrapper i:first-child {
+  left: 0;
+}
+.wrapper i:last-child {
+  right: 0;
+}
+
 .filters {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-right: 5rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  padding-left: 2em;
 }
 
 .filter {
+  z-index: 0;
   text-align: center;
   margin-right: 1.5rem;
   margin-top: 1rem;
   opacity: 0.7;
   cursor: pointer;
+  pointer-events: none;
 }
 
 .filter:hover {
@@ -195,7 +233,8 @@ body {
   align-items: center;
   margin: 1rem 0;
   padding: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding-left: 1rem;
+
   border-radius: 0.7rem;
 }
 
@@ -205,49 +244,6 @@ body {
 
 .listing-card img {
   height: 20rem;
-}
-
-.home-body {
-  background-image: url(https://images.pexels.com/photos/227692/landscape-reflection-waves-ripples-227692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-  background-size: cover;
-}
-
-.welcome {
-  display: inline-block;
-  margin-top: 10%;
-  margin-left: 23%;
-  background-color: rgba(128, 128, 128, 0.3);
-  backdrop-filter: blur(3px);
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  border-radius: 15px;
-  padding: 3rem;
-}
-.welcome h1,
-h3,
-a {
-  display: inline-block;
-  color: white;
-}
-
-.welcome a {
-  text-decoration: none;
-}
-
-.get-started {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: white;
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  margin: 0.5rem 0;
-  transform: translate(-50%, 0);
-  border: 1px solid white;
-  border-radius: 30px;
-  padding: 1rem;
-}
-
-.get-started:hover {
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 input[type="radio"] {

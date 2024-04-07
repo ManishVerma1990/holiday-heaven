@@ -28,7 +28,8 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public/css")));
 app.use(express.static(path.join(__dirname, "/public/javaScript")));
 
-const atlasUrl = process.env.ATLASDB_URL;
+// const atlasUrl = process.env.ATLASDB_URL;
+let atlasUrl = "mongodb+srv://maneeshverma1990:gxb2rBcq52w04zMV@cluster0.1evldr6.mongodb.net/?retryWrites=true&w=majority";
 
 const store = MongoStore.create({
   mongoUrl: atlasUrl,
@@ -40,7 +41,8 @@ const store = MongoStore.create({
 
 const sessionOptions = {
   store: store,
-  secret: process.env.SESSION_SECRET,
+  // secret: process.env.SESSION_SECRET,
+  secret: "THISISFAKESECRET",
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -49,7 +51,6 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -59,7 +60,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 
 async function main() {
   await mongoose.connect(atlasUrl);
@@ -88,7 +88,7 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 app.get("/", (req, res) => {
-  res.render("home.ejs");
+  res.redirect("listings");
 });
 
 //Error Handling Middleware
