@@ -28,8 +28,7 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public/css")));
 app.use(express.static(path.join(__dirname, "/public/javaScript")));
 
-// const atlasUrl = process.env.ATLASDB_URL;
-let atlasUrl = "mongodb+srv://maneeshverma1990:gxb2rBcq52w04zMV@cluster0.1evldr6.mongodb.net/?retryWrites=true&w=majority";
+const atlasUrl = process.env.ATLASDB_URL;
 
 const store = MongoStore.create({
   mongoUrl: atlasUrl,
