@@ -18,7 +18,6 @@ for (let button of filterButtons) {
   button.addEventListener("click", () => {
     if (document.querySelector(".active-btn")) document.querySelector(".active-btn").classList.remove("active-btn");
     button.classList.add("active-btn");
-    console.log(button.name);
     //logic for removing and adding lisitng on click
     for (let [index, value] of listingCards.entries()) {
       if (button.name == listingCategories[index].innerText) {
@@ -26,7 +25,7 @@ for (let button of filterButtons) {
       } else {
         value.classList.add("hide");
       }
-      if (button.name == "all" || listingCategories[index].innerText) {
+      if (button.name == "all") {
         value.classList.remove("hide");
       }
     }
