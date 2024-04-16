@@ -107,7 +107,9 @@ body {
 .listing-link {
   text-decoration: none;
 }
-
+img {
+  border-radius: 0.8rem !important;
+}
 .card-img-top {
   border-radius: 0.8rem;
   width: 100%;
@@ -129,6 +131,11 @@ body {
 
 .card-text p {
   font-weight: 400;
+}
+
+.card a {
+  text-decoration: none;
+  color: black;
 }
 
 /* new listing */
@@ -155,6 +162,7 @@ body {
 /* show listing */
 .show-img {
   height: 30vh;
+  object-fit: cover;
 }
 
 .delete-btn {
@@ -199,109 +207,10 @@ body {
   right: 0;
 }
 
-.filters {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-right: 5rem;
-  overflow: hidden;
-  scroll-behavior: smooth;
-  padding-left: 2em;
-}
-
-.filter {
-  z-index: 0;
-  text-align: center;
-  margin-right: 1.5rem;
-  margin-top: 1rem;
-  opacity: 0.7;
-  cursor: pointer;
-  pointer-events: none;
-}
-
-.filter:hover {
-  opacity: 1;
-}
-
-.filter p {
-  font-size: 0.8rem;
-}
-
-.tax-toggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-  padding: 0.5rem;
-  padding-left: 1rem;
-
-  border-radius: 0.7rem;
-}
-
-.tax-info {
-  display: none;
-}
-
 .listing-card img {
   height: 20rem;
 }
 
 input[type="radio"] {
   -webkit-appearance: none;
-}
-
-.like {
-  display: inline-block;
-  position: relative;
-  bottom: 45px;
-  left: 10px;
-  height: 40px;
-  width: 40px;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.4);
-  text-align: center;
-  border-radius: 50%;
-  font-size: 25px;
-  color: #fff;
-}
-
-.like a {
-  text-decoration: none;
-}
-
-.likebtn {
-  display: inline;
-  margin-top: 6px;
-  opacity: 0.9;
-}
-
-#not-liked {
-  display: inline;
-}
-
-#liked {
-  display: none;
-}
-
-.unlike {
-  display: inline-block;
-  position: relative;
-  bottom: 85px;
-  left: 55px;
-  height: 40px;
-  width: 40px;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.4);
-  text-align: center;
-  border-radius: 50%;
-  font-size: 25px;
-  color: #fff;
-}
-
-#not-unliked {
-  display: inline;
-}
-
-#unliked {
-  display: none;
 }

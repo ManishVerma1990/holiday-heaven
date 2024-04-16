@@ -1,19 +1,46 @@
 <% layout("/layouts/boilerplate") %>
 <body>
   <div class="row mt-2">
-    <div class="col-8 offset-3">
-      <h3><%= listing.title %></h3>
+    <div class="col-12 ">
+      <h3 class="offset-lg-3 offset-md-2" style="display: inline;"><%= listing.title %></h3>
     </div>
-    <div class="card col-7 offset-3 listing-card">
-      <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing image" />
-      <div class="like">
-        <i class="fa-regular fa-thumbs-up likebtn" id="not-liked"></i>
-        <i class="fa-solid fa-thumbs-up likebtn" id="liked"></i>
+    <div class="card col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3 listing-card">
+
+      <!-- Carousel for images -->
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <% for(let i=1; i<listing.images.length; i++){ %>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to=<%= i %> aria-label="Slide <%= i %>"></button>
+          <% } %>
+          </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="<%= listing.images[0].url %>" class="d-block w-100 show-img" alt="..." />
+          </div>
+          <% for(let i=1; i<listing.images.length; i++){ %>
+            <div class="carousel-item">
+              <img src="<%= listing.images[i].url %>" class="d-block w-100 show-img" alt="..." />
+            </div>
+          <% } %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="unlike">
-        <i class="fa-regular fa-thumbs-down likebtn" id="not-unliked"></i></i>
-        <i class="fa-solid fa-thumbs-down likebtn" id="unliked"></i></i>
-      </div>
+
       <div class="card-body">
         <p class="card-text">created by <i><%=listing.owner.username %></i></p>
         <p class="card-text"><%= listing.description %></p>
@@ -22,7 +49,7 @@
       </div>
     </div>
     <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
-    <div class="btns col-7 offset-3">
+    <div class="btns col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
       <form action="/listings/<%= listing._id %>/edit" method="get">
         <button class="btn btn-dark edit-btn col-1 offset-3">edit</button>
       </form>
@@ -33,7 +60,7 @@
     <% } %>
     <hr />
     <!-- review form -->
-    <div class="col-8 offset-3 mb-3">
+    <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
       <form class="needs-validation" action="/listings/<%= listing._id %>/reviews" method="post" novalidate>
         <h5>Leave a review</h5>
         <fieldset class="starability-grow">
@@ -57,14 +84,13 @@
         <button class="btn btn-outline-dark">Submit</button>
       </form>
     </div>
-    <div class="col-8 offset-3">
+    <!-- all reviews -->
+    <div class="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
       <hr />
-
-      <!-- all reviews -->
       <h5>All reviews</h5>
       <div class="row">
         <% for(review of listing.reviews){ %>
-        <div class="card col-5 ms-4 mb-3">
+        <div class="card col-10 col-md-5 m-auto mb-3">
           <div class="card-body">
             <h6 class="card-title"><i>@<%= review.author.username %></i></h6>
             <p class="starability-result" data-rating="<%= review.rating %>"></p>
@@ -82,51 +108,3 @@
   </div>
 </body>
 
-<script>
-  let likeStatus = "none";
-  
-  let like = document.getElementsByClassName("like");
-  like[0].addEventListener("click", ()=>{
-    if(likeStatus == "unliked"){
-      unlikeBtn();
-    }
-    likeBtn();
-  });
-  
-  let unlike = document.getElementsByClassName("unlike")
-  unlike[0].addEventListener("click", ()=>{
-    if(likeStatus == "liked"){
-      likeBtn();
-    }
-    unlikeBtn();
-    
-  });
-
-function likeBtn(){
-  console.log("likebtn");
-  likeStatus = "liked";
-  let liked = document.getElementById("liked");
-  let notLiked = document.getElementById("not-liked");
-  if (liked.style.display != "inline") {
-    liked.style.display = "inline";
-    notLiked.style.display = "none";
-  } else {
-    liked.style.display = "none";
-    notLiked.style.display = "inline";
-  }
-}
-
-function unlikeBtn(){
-  console.log("unlikebtn")
-  likeStatus = "unliked";
-  let unliked = document.getElementById("unliked");
-  let notUnliked = document.getElementById("not-unliked");
-  if (unliked.style.display != "inline") {
-    unliked.style.display = "inline";
-    notUnliked.style.display = "none";
-  } else {
-    unliked.style.display = "none";
-    notUnliked.style.display = "inline";
-  }
-}
-</script>

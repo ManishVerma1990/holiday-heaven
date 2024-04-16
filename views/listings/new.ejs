@@ -30,13 +30,40 @@
           <input class="form-control" name="listing[image]" type="file" />
         </div>
 
-        <div class="mb-2">
-          <label for="price" class="form-label">Price: </label>
-          <input class="form-control" name="listing[price]" type="text" placeholder="enter price" required />
-          <div class="valid-feedback">Looks good</div>
-          <div class="invalid-feedback">invlaid price</div>
+        <div class="row">
+          <div class="mb-2 col-md-6">
+            <label for="category" class="form-label">Category: </label>
+            <select class="form-select" name="listing[category]" aria-label="Default select example">
+              <option selected>select category</option>
+              <option selected="selected" value="all">All</option>
+              <option value="arctic">Arctic</option>
+              <option value="beach">Beach</option>
+              <option value="trending">Trending</option>
+              <option value="iconic cities">Iconic cities</option>
+              <option value="castles">Castles</option>
+              <option value="amazing pools">Amazing pools</option>
+              <option value="lakes">Lakes</option>
+              <option value="mountains">Mountains</option>
+              <option value="forest">Forest</option>
+              <option value="old house">Old house</option>
+              <option value="golfing">Golfing</option>
+              <option value="temples">Temples</option>
+              <option value="classic apartments">Classicl apartments</option>
+              <option value="towers">Towers</option>
+              <option value="parachuting">Parachuting</option>
+              <option value="lake house">Lake house</option>
+              <option value="igloo">Igloo</option>
+              <option value="farms">Farms</option>
+            </select>
+          </div>
+          <div class="mb-2 col-md-6">
+            <label for="price" class="form-label">Price: </label>
+            <input class="form-control" name="listing[price]" type="text" placeholder="enter price" required />
+            <div class="valid-feedback">Looks good</div>
+            <div class="invalid-feedback">invlaid price</div>
+          </div>
         </div>
-        
+
         <div class="row">
           <div class="mb-2 col-md-6">
             <label for="location" class="form-label">Location:</label>

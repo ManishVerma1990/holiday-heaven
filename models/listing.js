@@ -8,10 +8,13 @@ const listingSchema = new Schema({
     required: true,
   },
   description: String,
-  image: {
-    url: String,
-    filename: String,
-  },
+  category: String,
+  images: [
+    {
+      url: String,
+      filename: String,
+    },
+  ],
   price: Number,
   location: String,
   country: String,
@@ -31,7 +34,7 @@ listingSchema.post("findOneAndDelete", async (listing) => {
   for (let review of listing.reviews) {
     await Review.findByIdAndDelete(review.toString());
   }
-  // let res = await Review.deleteMany({ reviews: { $in: listing.reviews } });
+  let res = await Review.deleteMany({ reviews: { $in: listing.reviews } });
 });
 
 module.exports = mongoose.model("Listing", listingSchema);
