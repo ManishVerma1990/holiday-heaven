@@ -1,8 +1,11 @@
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const initData = require("./data2.js");
 const Listing = require("../models/listing.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/holiday-heaven";
+// const MONGO_URL = process.env.ATLASDB_URL;
+const MONGO_URL = "mongodb+srv://maneeshverma1990:gxb2rBcq52w04zMV@cluster0.1evldr6.mongodb.net/?retryWrites=true&w=majority";
 
 main()
   .then(() => {
