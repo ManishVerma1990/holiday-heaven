@@ -20,7 +20,7 @@
           <% for(let i=1; i<listing.images.length; i++){ %>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to=<%= i %> aria-label="Slide <%= i %>"></button>
           <% } %>
-          </div>
+        </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="<%= listing.images[0].url %>" class="d-block w-100 show-img" alt="..." />
@@ -47,7 +47,8 @@
         <p class="card-text"><%= listing.location %>, <%= listing.country %></p>
       </div>
     </div>
-    <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
+    <%= console.log(currUser) %>
+    <% if(currUser && currUser?._id?.equals(listing?.owner?._id)) {%>
     <div class="btns col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-3">
       <form action="/listings/<%= listing._id %>/edit" method="get">
         <button class="btn btn-dark edit-btn col-1 offset-3">edit</button>
